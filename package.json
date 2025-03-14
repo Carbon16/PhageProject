@@ -1,0 +1,20 @@
+{
+  "name": "phageproject",
+  "version": "0.1.0",
+  "description": "Management system for The Phage Collection Project",
+  "homepage": "https://github.com/Carbon16/PhageProject#readme",
+  "bugs": {
+    "url": "https://github.com/Carbon16/PhageProject/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carbon16/PhageProject.git"
+  },
+  "license": "UNLICENCED",
+  "author": "Leo G Skingley",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

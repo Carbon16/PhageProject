@@ -1,0 +1,38 @@
+table users {
+  userID varchar pk
+  name varchar
+  password varchar
+  type char
+  email varchar
+  phoneNumber int
+  address varchar
+  registered datetime 
+}
+
+table requests {
+  requestID varchar pk
+  orderedBy varchar [ref: > users.userID ]
+  address varchar
+  dispatched bool
+  returned bool
+  trackingNumber varchar
+  dateDispatched date
+  dateRecieved date
+  dateCollected date
+  location gps
+}
+
+table phages {
+  phageID varchar pk
+  request varchar [ref: > requests.requestID]
+  name varchar
+  acession char
+  dateAdded date
+  TEMImage varchar
+  foundBy varchar [ref: > users.userID]
+  lyses array
+  noLyse array
+  unknownLyse array
+  isolatedBy varchar [ref: > users.userID]
+}
+
