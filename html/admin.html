@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phage Project Portal | Admin</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar d-flex justify-content-between align-items-center p-3 border-bottom" style="background-color: cadetblue;">
+        <div class="logo">
+            <h1 class="h4 m-0">Phage Project Portal β</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="login" class="btn btn-secondary me-2">Login</a>
+            <a href="register" class="btn btn-outline-light">Register</a>
+        </div>
+    </div>
+
+    <!-- Tabbed Content -->
+    <div class="container mt-4">
+        <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="true">Orders</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="phages-tab" data-bs-toggle="tab" data-bs-target="#phages" type="button" role="tab" aria-controls="phages" aria-selected="false">Phages</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="phages-tab" data-bs-toggle="tab" data-bs-target="#strains" type="button" role="tab" aria-controls="phages" aria-selected="false">Strains</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="false">Users</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="adminTabsContent">
+            <!-- Orders Tab -->
+            <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                <h3 class="mt-3">Orders</h3>
+                <p>Manage and view all orders here.</p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Ordered By</th>
+                            <th>Status</th>
+                            <th>Tracking Code</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Orders will be dynamically populated here -->
+                    </tbody>
+                </table>
+            </div>
+<!-- Phages Tab -->
+<div class="tab-pane fade" id="phages" role="tabpanel" aria-labelledby="phages-tab">
+    <h3 class="mt-3">Phages</h3>
+    <p>Manage and view all phages here.</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Phage ID</th>
+                <th>Name</th>
+                <th>Accession</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="phagesTableBody">
+            <!-- Phages will be dynamically populated here -->
+        </tbody>
+    </table>
+</div>
+<!-- Users Tab -->
+<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+    <h3 class="mt-3">Users</h3>
+    <p>Manage and view all users here.</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="usersTableBody">
+            <!-- Users will be dynamically populated here -->
+        </tbody>
+    </table>
+</div>
+<!-- Strains Tab -->
+<div class="tab-pane fade" id="strains" role="tabpanel" aria-labelledby="strains-tab">
+    <h3 class="mt-3">Strains</h3>
+    <p>Manage and view all strains here.</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Strain ID</th>
+                <th>Name</th>
+                <th>Accession</th>
+                <th>Species</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="strainsTableBody">
+            <!-- Strains will be dynamically populated here -->
+        </tbody>
+    </table>
+</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-4">
+        <div class="container">
+            <span class="text-muted">Phage Project Portal</span>
+            <br>
+            <a href="https://www.phage-collection.org/" target="_blank">
+                <img src="https://www.phage-collection.org/favicon.ico" alt="Phage Collection Project" style="width: 16px; height: 16px; vertical-align: middle;"> Phage Collection Project
+            </a> |
+            <a href="https://www.fnobregalab.org/" target="_blank">
+                <img src="https://www.fnobregalab.org/favicon.ico" alt="Microbial Interactions Lab" style="width: 16px; height: 16px; vertical-align: middle;"> Microbial Interactions Lab
+            </a> |
+            <a href="https://www.klebphacol.org/" target="_blank">
+                <img src="https://www.klebphacol.org/favicon.ico" alt="KlebPhacol" style="width: 16px; height: 16px; vertical-align: middle;"> KlebPhacol
+            </a>
+            <br>
+            <span>Email: 
+                <a href="mailto:lgs1g24@soton.ac.uk">lgs1g24@soton.ac.uk</a>, 
+                <a href="mailto:esme.brinsden@soton.ac.uk">esme.brinsden@soton.ac.uk</a>, 
+                <a href="mailto:f.nobrega@soton.ac.uk">f.nobrega@soton.ac.uk</a>
+            </span>
+            <br>
+            <span>&copy; 2025 Leo G Skingley</span>
+        </div>
+    </footer>
+    <!-- View Details Modal -->
+<div id="viewDetailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Order Details</h2>
+        <p><strong>Order ID:</strong> <span id="modalOrderID"></span></p>
+        <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+        <p><strong>Country:</strong> <span id="modalCountry"></span></p>
+        <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+        <p><strong>Tracking Code:</strong> <span id="modalTrackingCode"></span></p>
+        <p><strong>Comments:</strong> <span id="modalComments"></span></p>
+    </div>
+</div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+let orders = []; // Initialize orders as an empty array
+
+// Fetch orders from the API
+fetch('/orders', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'auth': 'Bearer ' + localStorage.getItem('token')
+    }
+})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('API Response:', data); // Debug the response
+        if (Array.isArray(data)) {
+            orders = data; // Assign the response to orders if it's an array
+            populateOrdersTable();
+        } else {
+            console.error('API response is not an array:', data);
+        }
+    })
+    .catch(error => console.error('Error fetching orders:', error));
+
+// Populate the orders table
+function populateOrdersTable() {
+    const tableBody = document.getElementById('ordersTableBody');
+    tableBody.innerHTML = ''; // Clear existing rows
+
+    if (Array.isArray(orders)) {
+        orders.forEach(order => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${order.requestID}</td>
+                <td>${order.orderedBy || 'N/A'}</td> <!-- Populate Ordered By -->
+                <td>
+                    <select class="form-select form-select-sm" onchange="updateOrderStatus('${order.requestID}', this.value)">
+                        <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
+                        <option value="dispatched" ${order.status === 'dispatched' ? 'selected' : ''}>Dispatched</option>
+                        <option value="collected" ${order.status === 'collected' ? 'selected' : ''}>Collected</option>
+                        <option value="received" ${order.status === 'received' ? 'selected' : ''}>Received</option>
+                        <option value="completed" ${order.status === 'completed' ? 'selected' : ''}>Completed</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control form-control-sm" value="${order.trackingNumber || ''}" onchange="updateTrackingCode('${order.requestID}', this.value)">
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="viewOrderDetails('${order.requestID}')">View Details</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    } else {
+        console.error('Orders is not an array:', orders);
+    }
+}
+
+// Update order status
+// Update order status
+function updateOrderStatus(orderId, newStatus) {
+    console.log(`Updating status for Order ID: ${orderId} to ${newStatus}`);
+
+    // Make a PATCH request to update the order status
+    fetch(`/set/status/${orderId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth': 'Bearer ' + localStorage.getItem('token') // Include the authentication token
+        },
+        body: JSON.stringify({ status: newStatus }) // Send the new status in the request body
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Order ID: ${orderId} status updated successfully to ${newStatus}`);
+                alert(`Order status updated successfully to "${newStatus}"`);
+            } else if (response.status === 404) {
+                alert('Order not found');
+            } else if (response.status === 400) {
+                alert('Missing required fields');
+            } else {
+                alert('Failed to update order status. Please try again later.');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating order status:', error);
+            alert('An error occurred while updating the order status.');
+        });
+}
+
+// Update tracking code
+function updateTrackingCode(orderId, newTrackingCode) {
+    console.log(`Updating tracking code for Order ID: ${orderId} to ${newTrackingCode}`);
+    // Add API call here to update the tracking code on the server
+}
+
+// View order details
+function viewOrderDetails(orderId) {
+    const order = orders.find(o => o.requestID === orderId);
+    if (order) {
+        alert(`Details for Order ID: ${orderId}\n\nAddress: ${order.address}\nStatus: ${order.status}\nComments: ${order.comments}`);
+        // Replace alert with a modal or detailed view if needed
+    }
+}
+
+// Initialize the orders table on page load
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Page loaded, fetching orders...');
+});
+
+// Get the modal, close button, and other elements
+const viewDetailsModal = document.getElementById("viewDetailsModal");
+const closeDetailsButton = viewDetailsModal.querySelector(".close-button");
+
+// Function to open the modal and populate it with order details
+function viewOrderDetails(orderId) {
+    const order = orders.find(o => o.requestID === orderId);
+    if (order) {
+        // Populate modal fields with order details
+        document.getElementById("modalOrderID").textContent = order.requestID;
+        document.getElementById("modalAddress").textContent = order.address || "N/A";
+        document.getElementById("modalCountry").textContent = order.country || "N/A";
+        document.getElementById("modalStatus").textContent = order.status || "N/A";
+        document.getElementById("modalTrackingCode").textContent = order.trackingNumber || "N/A";
+        document.getElementById("modalComments").textContent = order.comments || "N/A";
+
+        // Show the modal
+        viewDetailsModal.style.display = "block";
+    } else {
+        alert("Order details not found.");
+    }
+}
+
+// Close the modal when the close button is clicked
+closeDetailsButton.addEventListener("click", () => {
+    viewDetailsModal.style.display = "none";
+});
+
+// Close the modal when clicking outside the modal content
+window.addEventListener("click", (event) => {
+    if (event.target === viewDetailsModal) {
+        viewDetailsModal.style.display = "none";
+    }
+});
+// Sample data for Orders
+
+// Sample data for Phages
+const phages = [
+    {
+        phageID: "PHG001",
+        name: "Phage Alpha",
+        accession: "ACC001",
+        dateAdded: "2025-03-12"
+    },
+    {
+        phageID: "PHG002",
+        name: "Phage Beta",
+        accession: "ACC002",
+        dateAdded: "2025-03-13"
+    }
+];
+
+// Sample data for Strains
+const strains = [
+    {
+        StrainID: "ST001",
+        Name: "Strain A",
+        Accession: "ACC1001",
+        Species: "E. coli"
+    },
+    {
+        StrainID: "ST002",
+        Name: "Strain B",
+        Accession: "ACC1002",
+        Species: "Klebsiella"
+    }
+];
+
+// Sample data for Users
+const users = [
+    {
+        userID: "USR001",
+        name: "John Doe",
+        email: "john.doe@example.com",
+        type: "A"
+    },
+    {
+        userID: "USR002",
+        name: "Jane Smith",
+        email: "jane.smith@example.com",
+        type: "R"
+    },
+    {
+        userID: "USR003",
+        name: "Alice Johnson",
+        email: "alice.johnson@example.com",
+        type: "U"
+    }
+];
+
+function populatePhagesTable(phages) {
+    const tableBody = document.getElementById('phagesTableBody');
+    tableBody.innerHTML = ''; // Clear existing rows
+
+    phages.forEach(phage => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${phage.phageID}</td>
+            <td>${phage.name}</td>
+            <td>${phage.accession}</td>
+            <td>${phage.dateAdded}</td>
+            <td>
+                <button class="btn btn-primary btn-sm">View</button>
+                <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+function populateStrainsTable(strains) {
+    const tableBody = document.getElementById('strainsTableBody');
+    tableBody.innerHTML = ''; // Clear existing rows
+
+    strains.forEach(strain => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${strain.StrainID}</td>
+            <td>${strain.Name}</td>
+            <td>${strain.Accession}</td>
+            <td>${strain.Species}</td>
+            <td>
+                <button class="btn btn-primary btn-sm">View</button>
+                <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+function populateUsersTable(users) {
+    const tableBody = document.getElementById('usersTableBody');
+    tableBody.innerHTML = ''; // Clear existing rows
+
+    users.forEach(user => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${user.userID}</td>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.type}</td>
+            <td>
+                <button class="btn btn-primary btn-sm">View</button>
+                <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Populate the tables with sample data
+populatePhagesTable(phages);
+populateStrainsTable(strains);
+populateUsersTable(users);
+    </script>
+</body>
+</html>

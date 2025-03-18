@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phage Project Portal | Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar d-flex justify-content-between align-items-center p-3 border-bottom" style="background-color: cadetblue;">
+        <div class="logo">
+            <h1 class="h4 m-0">Phage Project Portal</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="login" class="btn btn-secondary me-2">Login</a>
+            <a href="register" class="btn btn-outline-light">Register</a>
+        </div>
+    </div>
+    <div class="action-buttons d-flex justify-content-center mt-4">
+        <a id="orderKitButton" class="btn btn-primary me-3">Order a Kit</a>
+        <a id="ordered" class="btn btn-secondary">View Previous Orders</a>
+    </div>
+    <div class="container mt-4 bg-gray p-4">
+        <h1>Welcome to the Phage Collection Project Portal</h1>
+        <p>This site is used to log collected Phages, and to order collection kits.</p>
+    </div>
+
+      <!-- Modal -->
+<!-- Modal -->
+<!-- Modal -->
+<div id="orderKitModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Order Your Kit</h2>
+        <p>Fill out the form below to order your kit.</p>
+        <p><strong>Note:</strong> If you are under 18, please get a parent or guardian to fill out this form for you.</p>
+        <form>
+            <!-- Address Field -->
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required style="width: 100%; height: 100px;" placeholder="Enter your address"></textarea>
+            <br><br>
+
+            <!-- Country Dropdown -->
+            <label for="country">Country:</label>
+            <select id="country" name="country" required style="width: 100%;">
+                <option value="" disabled selected>Select your country</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Angola">Angola</option>
+                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Australia">Australia</option>
+                <option value="Austria">Austria</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="Bahamas">Bahamas</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Barbados">Barbados</option>
+                <option value="Belarus">Belarus</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Belize">Belize</option>
+                <option value="Benin">Benin</option>
+                <option value="Bhutan">Bhutan</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                <option value="Botswana">Botswana</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Brunei">Brunei</option>
+                <option value="Bulgaria">Bulgaria</option>
+                <option value="Burkina Faso">Burkina Faso</option>
+                <option value="Burundi">Burundi</option>
+                <option value="Cabo Verde">Cabo Verde</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Canada">Canada</option>
+                <option value="Central African Republic">Central African Republic</option>
+                <option value="Chad">Chad</option>
+                <option value="Chile">Chile</option>
+                <option value="China">China</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Comoros">Comoros</option>
+                <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</option>
+                <option value="Costa Rica">Costa Rica</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Cuba">Cuba</option>
+                <option value="Cyprus">Cyprus</option>
+                <option value="Czechia (Czech Republic)">Czechia (Czech Republic)</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Djibouti">Djibouti</option>
+                <option value="Dominica">Dominica</option>
+                <option value="Dominican Republic">Dominican Republic</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Egypt">Egypt</option>
+                <option value="El Salvador">El Salvador</option>
+                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                <option value="Eritrea">Eritrea</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Eswatini (fmr. Swaziland)">Eswatini (fmr. Swaziland)</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Fiji">Fiji</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Gabon">Gabon</option>
+                <option value="Gambia">Gambia</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Germany">Germany</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Greece">Greece</option>
+                <option value="Grenada">Grenada</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Guinea">Guinea</option>
+                <option value="Guinea-Bissau">Guinea-Bissau</option>
+                <option value="Guyana">Guyana</option>
+                <option value="Haiti">Haiti</option>
+                <option value="Holy See">Holy See</option>
+                <option value="Honduras">Honduras</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Iceland">Iceland</option>
+                <option value="India">India</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Iran">Iran</option>
+                <option value="Iraq">Iraq</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Israel">Israel</option>
+                <option value="Italy">Italy</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="Japan">Japan</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Kazakhstan">Kazakhstan</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Kiribati">Kiribati</option>
+                <option value="Kuwait">Kuwait</option>
+                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                <option value="Laos">Laos</option>
+                <option value="Latvia">Latvia</option>
+                <option value="Lebanon">Lebanon</option>
+                <option value="Lesotho">Lesotho</option>
+                <option value="Liberia">Liberia</option>
+                <option value="Libya">Libya</option>
+                <option value="Liechtenstein">Liechtenstein</option>
+                <option value="Lithuania">Lithuania</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Madagascar">Madagascar</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Maldives">Maldives</option>
+                <option value="Mali">Mali</option>
+                <option value="Malta">Malta</option>
+                <option value="Marshall Islands">Marshall Islands</option>
+                <option value="Mauritania">Mauritania</option>
+                <option value="Mauritius">Mauritius</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Micronesia">Micronesia</option>
+                <option value="Moldova">Moldova</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Mongolia">Mongolia</option>
+                <option value="Montenegro">Montenegro</option>
+                <option value="Morocco">Morocco</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Myanmar (Burma)">Myanmar (Burma)</option>
+                <option value="Namibia">Namibia</option>
+                <option value="Nauru">Nauru</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Niger">Niger</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="North Korea">North Korea</option>
+                <option value="North Macedonia">North Macedonia</option>
+                <option value="Norway">Norway</option>
+                <option value="Oman">Oman</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Palau">Palau</option>
+                <option value="Palestine State">Palestine State</option>
+                <option value="Panama">Panama</option>
+                <option value="Papua New Guinea">Papua New Guinea</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Peru">Peru</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Romania">Romania</option>
+                <option value="Russia">Russia</option>
+                <option value="Rwanda">Rwanda</option>
+                <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                <option value="Saint Lucia">Saint Lucia</option>
+                <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                <option value="Samoa">Samoa</option>
+                <option value="San Marino">San Marino</option>
+                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Serbia">Serbia</option>
+                <option value="Seychelles">Seychelles</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Slovakia">Slovakia</option>
+                <option value="Slovenia">Slovenia</option>
+                <option value="Solomon Islands">Solomon Islands</option>
+                <option value="Somalia">Somalia</option>
+                <option value="South Africa">South Africa</option>
+                <option value="South Korea">South Korea</option>
+                <option value="South Sudan">South Sudan</option>
+                <option value="Spain">Spain</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Sudan">Sudan</option>
+                <option value="Suriname">Suriname</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Syria">Syria</option>
+                <option value="Taiwan">Taiwan</option>
+                <option value="Tajikistan">Tajikistan</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Timor-Leste">Timor-Leste</option>
+                <option value="Togo">Togo</option>
+                <option value="Tonga">Tonga</option>
+                <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                <option value="Tunisia">Tunisia</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Turkmenistan">Turkmenistan</option>
+                <option value="Tuvalu">Tuvalu</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="United States of America">United States of America</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Uzbekistan">Uzbekistan</option>
+                <option value="Vanuatu">Vanuatu</option>
+                <option value="Vatican City">Vatican City</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Yemen">Yemen</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+            </select>
+            <br><br>
+
+            <!-- Phone Number Field -->
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <br><br>
+
+            <!-- Over 18 Checkbox -->
+            <label for="over18">
+                <input type="checkbox" id="over18" name="over18" required>
+                Are you over 18?
+            </label>
+            <br><br>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Phage Project Portal</span>
+        <br>
+        <a href="https://www.phage-collection.org/" target="_blank">
+            <img src="https://www.phage-collection.org/favicon.ico" alt="Phage Collection Project" style="width: 16px; height: 16px; vertical-align: middle;"> Phage Collection Project
+        </a> |
+        <a href="https://www.fnobregalab.org/" target="_blank">
+            <img src="https://www.fnobregalab.org/favicon.ico" alt="Microbial Interactions Lab" style="width: 16px; height: 16px; vertical-align: middle;"> Microbial Interactions Lab
+        </a> |
+        <a href="https://www.klebphacol.org/" target="_blank">
+            <img src="https://www.klebphacol.org/favicon.ico" alt="KlebPhacol" style="width: 16px; height: 16px; vertical-align: middle;"> KlebPhacol
+        </a>
+        <br>
+        <span>Email: 
+            <a href="mailto:lgs1g24@soton.ac.uk">lgs1g24@soton.ac.uk</a>, 
+            <a href="mailto:esme.brinsden@soton.ac.uk">esme.brinsden@soton.ac.uk</a>, 
+            <a href="mailto:f.nobrega@soton.ac.uk">f.nobrega@soton.ac.uk</a>
+        </span>
+        <br>
+        <span>&copy; 2025 Leo G Skingley</span>
+    </div>
+</footer>
+</body>
+<script>
+    // Get the modal, button, and close elements
+    const modal = document.getElementById("orderKitModal");
+    const orderKitButton = document.getElementById("orderKitButton");
+    const closeButton = document.querySelector(".close-button");
+
+    // Show the modal when the "Order Kit" button is clicked
+    orderKitButton.addEventListener("click", () => {
+    modal.style.display = "block";
+    });
+
+    // Close the modal when the close button is clicked
+    closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    });
+
+    // Close the modal when clicking outside the modal content
+    window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+    });
+
+// Add event listener to the form
+document.querySelector("form").addEventListener("submit", async (event) => {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Check if the user is over 18
+    if (!document.getElementById("over18").checked) {
+        alert("You must be over 18 to order a kit.");
+        return;
+    }
+
+    // If the user is not ordering from the UK, show a warning about international protocols
+    if (document.getElementById("country").value !== "United Kingdom") {
+        alert("Please be aware that international orders may be subject to additional customs checks and import duties, and therefore may take longer to process.");
+    }
+
+    // Prepare the form data
+    const formData = {
+        address: document.getElementById("address").value,
+        country: document.getElementById("country").value,
+        phone: document.getElementById("phone").value,
+    };
+
+    try {
+        // Send the request to the server
+        const response = await fetch("/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth": "Bearer " + localStorage.getItem("token"),
+            },
+            body: JSON.stringify({
+                address: formData.address,
+                country: formData.country,
+                phone: formData.phone
+            }),
+        });
+
+        // Check if the response is successful
+        if (response.ok) {
+            alert("Your kit has been ordered. You will receive an email confirmation shortly.");
+            // Close the modal
+            modal.style.display = "none";
+        } else {
+            const errorData = await response.json();
+            alert(`Error: ${errorData.message || "Failed to submit the form."}`);
+        }
+    } catch (error) {
+        console.error("Error submitting the form:", error);
+        alert("An error occurred while submitting the form. Please try again later.");
+    }
+});
+
+// Add event listener to the "View Previous Orders" button
+document.getElementById("ordered").addEventListener("click", async () => {
+    // got to the orders page with the token
+    window.location.href = "/orders/" + localStorage.getItem("token");
+});
+
+</script>
+</html>

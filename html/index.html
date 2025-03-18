@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phage Project Portal | Home</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar d-flex justify-content-between align-items-center p-3 border-bottom" style="background-color: cadetblue;">
+        <div class="logo">
+            <h1 class="h4 m-0">Phage Project Portal β</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="login" class="btn btn-secondary me-2">Login</a>
+            <a href="register" class="btn btn-outline-light">Register</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4 bg-gray p-4">
+        <h1>Welcome to the Phage Collection Project Portal (Beta)</h1>
+        <p>This site is used to log collected Phages, and to order collection kits.</p>
+    </div>
+
+    <!-- Button Section -->
+    <div class="button-section">
+        <a href="search.html" class="btn btn-primary me-2">Search</a>
+        <a onclick="order()" class="btn btn-success">Order Kit</a>
+    </div>
+
+    <!-- Ticker Tape -->
+    <div class="ticker-tape">
+        <span>
+            <img src="/images/phage1.jpg" alt="Phage 1" onclick="window.location.href='https://www.google.com'">
+            <img src="/images/phage2.jpg" alt="Phage 2" onclick="window.location.href='https://www.google.com'">
+            <img src="/images/phage3.jpg" alt="Phage 3" onclick="window.location.href='https://www.google.com'">
+            <img src="/images/phage4.jpg" alt="Phage 4" onclick="window.location.href='https://www.google.com'">
+            <img src="/images/phage5.jpg" alt="Phage 5" onclick="window.location.href='https://www.google.com'">
+        </span>
+    </div>
+    <script>
+        function order() {
+            //check if the user is already logged in
+            if (localStorage.getItem('token')) {
+                //redirect to the home page
+                //get the toke
+                window.location.href = `dashboard/${localStorage.getItem('token')}`;
+            } else {
+                //redirect to the login page
+                window.location.href = 'register';
+            }
+        }
+    </script>
+    <!-- add footer -->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Phage Project Portal</span>
+            <br>
+            <a href="https://www.phage-collection.org/" target="_blank">
+                <img src="https://www.phage-collection.org/favicon.ico" alt="Phage Collection Project" style="width: 16px; height: 16px; vertical-align: middle;"> Phage Collection Project
+            </a> |
+            <a href="https://www.fnobregalab.org/" target="_blank">
+                <img src="https://www.fnobregalab.org/favicon.ico" alt="Microbial Interactions Lab" style="width: 16px; height: 16px; vertical-align: middle;"> Microbial Interactions Lab
+            </a> |
+            <a href="https://www.klebphacol.org/" target="_blank">
+                <img src="https://www.klebphacol.org/favicon.ico" alt="KlebPhacol" style="width: 16px; height: 16px; vertical-align: middle;"> KlebPhacol
+            </a>
+            <br>
+            <span>Email: 
+                <a href="mailto:lgs1g24@soton.ac.uk">lgs1g24@soton.ac.uk</a>, 
+                <a href="mailto:esme.brinsden@soton.ac.uk">esme.brinsden@soton.ac.uk</a>, 
+                <a href="mailto:f.nobrega@soton.ac.uk">f.nobrega@soton.ac.uk</a>
+            </span>
+            <br>
+            <span>&copy; 2025 Leo G Skingley</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phage Project Portal | Register</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar d-flex justify-content-between align-items-center p-3 border-bottom" style="background-color: cadetblue;">
+        <div class="logo">
+            <h1 class="h4 m-0">Phage Project Portal</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="login" class="btn btn-secondary me-2">Login</a>
+            <a href="register" class="btn btn-outline-light">Register</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1>Register</h1>
+        <form id="registerForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="institution" class="form-label">Institution (Optional)</label>
+                <input type="text" id="institution" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" required>
+                <small class="form-text text-muted">
+                    Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character.
+                </small>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Regular expression for strong password
+            const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            // Validate name
+            if (name === '') {
+                alert('Name is required.');
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            // Validate email
+            if (email === '') {
+                alert('Email address is required.');
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            // Validate password strength
+            if (!strongPasswordRegex.test(password)) {
+                alert('Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character.');
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                event.preventDefault(); // Prevent form submission
+            }
+
+            fetch('http://localhost:8080/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('User registered successfully');
+                    window.location.href = 'login.html';
+                } else {
+                    response.text().then(text => {
+                        console.error('Error:', text);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+        });
+    });
+    </script>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Phage Project Portal</span>
+            <br>
+            <a href="https://www.phage-collection.org/" target="_blank">
+                <img src="https://www.phage-collection.org/favicon.ico" alt="Phage Collection Project" style="width: 16px; height: 16px; vertical-align: middle;"> Phage Collection Project
+            </a> |
+            <a href="https://www.fnobregalab.org/" target="_blank">
+                <img src="https://www.fnobregalab.org/favicon.ico" alt="Microbial Interactions Lab" style="width: 16px; height: 16px; vertical-align: middle;"> Microbial Interactions Lab
+            </a> |
+            <a href="https://www.klebphacol.org/" target="_blank">
+                <img src="https://www.klebphacol.org/favicon.ico" alt="KlebPhacol" style="width: 16px; height: 16px; vertical-align: middle;"> KlebPhacol
+            </a>
+            <br>
+            <span>Email: 
+                <a href="mailto:lgs1g24@soton.ac.uk">lgs1g24@soton.ac.uk</a>, 
+                <a href="mailto:esme.brinsden@soton.ac.uk">esme.brinsden@soton.ac.uk</a>, 
+                <a href="mailto:f.nobrega@soton.ac.uk">f.nobrega@soton.ac.uk</a>
+            </span>
+            <br>
+            <span>&copy; 2025 Leo G Skingley</span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phage Project Portal | Login</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar d-flex justify-content-between align-items-center p-3 border-bottom" style="background-color: cadetblue;">
+        <div class="logo">
+            <h1 class="h4 m-0">Phage Project Portal</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="login" class="btn btn-secondary me-2">Login</a>
+            <a href="register" class="btn btn-outline-light">Register</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission and page reload
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            // Validate email
+            if (email === '') {
+                alert('Email address is required.');
+                return;
+            }
+
+            // Validate password
+            if (password === '') {
+                alert('Password is required.');
+                return;
+            }
+
+            // Send login data to the server
+            fetch('http://localhost:8080/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // store the jwr token in local storage
+                    response.json().then(data => {
+                        localStorage.setItem('token', data.token);
+                        // set the token to expire in 30 days
+                        localStorage.setItem('tokenExpires', Date.now() + 30 * 24 * 60 * 60 * 1000);
+                        // move the the dashboard using the token as a auth header
+                        window.location.href = `dashboard/${data.token}`;
+                    });
+                } else {
+                    response.text().then(text => {
+                        alert('Error: ' + text);
+                    });
+                }
+            })
+            .catch(error => {
+                alert('Fetch error: ' + error.message);
+            });
+        });
+    </script>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Phage Project Portal</span>
+            <br>
+            <a href="https://www.phage-collection.org/" target="_blank">
+                <img src="https://www.phage-collection.org/favicon.ico" alt="Phage Collection Project" style="width: 16px; height: 16px; vertical-align: middle;"> Phage Collection Project
+            </a> |
+            <a href="https://www.fnobregalab.org/" target="_blank">
+                <img src="https://www.fnobregalab.org/favicon.ico" alt="Microbial Interactions Lab" style="width: 16px; height: 16px; vertical-align: middle;"> Microbial Interactions Lab
+            </a> |
+            <a href="https://www.klebphacol.org/" target="_blank">
+                <img src="https://www.klebphacol.org/favicon.ico" alt="KlebPhacol" style="width: 16px; height: 16px; vertical-align: middle;"> KlebPhacol
+            </a>
+            <br>
+            <span>Email: 
+                <a href="mailto:lgs1g24@soton.ac.uk">lgs1g24@soton.ac.uk</a>, 
+                <a href="mailto:esme.brinsden@soton.ac.uk">esme.brinsden@soton.ac.uk</a>, 
+                <a href="mailto:f.nobrega@soton.ac.uk">f.nobrega@soton.ac.uk</a>
+            </span>
+            <br>
+            <span>&copy; 2025 Leo G Skingley</span>
+        </div>
+    </footer>
+</body>
+</html>
